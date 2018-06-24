@@ -11,6 +11,6 @@
 		"environment:stop": "npm-run-all compose:stop",
 		"compose:up": "docker-compose -p php -f configuration/docker/docker-compose.yml up -d",
 		"compose:stop": "docker-compose -p php -f configuration/docker/docker-compose.yml stop",
-		"php:bash": "docker exec -it php:bash bash"
+		"php:bash": "docker exec -it php_php_1 bash"
 	}
 }
