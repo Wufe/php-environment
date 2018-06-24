@@ -1,0 +1,16 @@
+{
+	"name": "php-environment",
+	"version": "1.0.0",
+	"main": "index.js",
+	"license": "MIT",
+	"devDependencies": {
+		"npm-run-all": "^4.1.3"
+	},
+	"scripts": {
+		"environment:start": "npm-run-all compose:up",
+		"environment:stop": "npm-run-all compose:stop",
+		"compose:up": "docker-compose -p php -f configuration/docker/docker-compose.yml up -d",
+		"compose:stop": "docker-compose -p php -f configuration/docker/docker-compose.yml stop",
+		"php:bash": "docker exec -it php:bash bash"
+	}
+}

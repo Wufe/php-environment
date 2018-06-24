@@ -1,0 +1,29 @@
+version: '2'
+
+services:
+    web:
+        image: nginx:latest
+        ports:
+            - "9000:80"
+        volumes:
+            - ./../../src:/app
+            - ./../nginx/site.conf:/etc/nginx/conf.d/default.conf
+        networks:
+            - php-net
+    php:
+        image: php:fpm
+        volumes:
+            - ./../../src:/app
+        working_dir: /app
+        networks:
+            php-net:
+                aliases:
+                    - php
+    composer:
+        image: composer
+        volumes:
+            - ./../../vendor:/tmp
+            - ./../../src:/app
+networks:
+    php-net:
+        driver: bridge
